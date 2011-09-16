@@ -1,0 +1,509 @@
+
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+::-moz-selection { background: #CE1414; color: #fff; text-shadow: none; }
+::selection { background: #CE1414; color: #fff; text-shadow: none; }
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #00e; }
+a:visited { color: #CE1414; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+b, strong { font-weight: bold; }
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+small { font-size: 85%; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; *overflow: visible; }
+table button, table input { *overflow: auto; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/* ==========================================================================
+   Primary Styles
+   ========================================================================== */
+
+
+html
+{
+  width: 100%;
+  height: 100%;
+}
+
+body
+{
+  width: 100%;
+  height: 100%;
+  color: #343434;
+  font-family: "Helvetica Neue", helvetica, sans-serif;
+  background: #000 url(../img/html-bg.png) repeat-x center top;
+}
+
+#page
+{
+  position: relative;
+  margin: 0 auto;
+  padding: 0 7% 0 7%;
+  text-align: left;
+  line-height: 1.5;
+}
+
+header
+{
+  position: relative;
+  height: 123px;
+}
+
+header a#logo 
+{ 
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 240px;
+  height: 60px;
+  padding: 20px 0 0 40px;
+  clear: both;
+  font-family: 'Francois One', Arial, helvetica, serif; 
+  font-size: 2.4em;
+  line-height: 100%;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 black;
+  letter-spacing: -2px;  
+  color: #FFF;  
+}
+
+header a#logo span
+{
+  display: block;
+  position: absolute;
+  top: 23px;
+  left: 15px;
+  width: 21px;
+  height: 25px;
+  text-indent: -9999px;
+  background: url(../img/ib.png) no-repeat left top;
+}
+
+
+/* HEADINGS =============================================================== */
+
+
+h1,h2,h3,h4,h5,h6
+{
+  font-family: 'Francois One', Arial, helvetica, serif; 
+  font-size: 1.5em;
+  color: #6fafed;
+  padding: 0;
+  margin: 0;
+  color: #CE1414;
+}
+
+a
+{
+  color: #CE1414;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+a:hover
+{
+  color: #CE1414;
+  text-decoration: none;
+}
+
+
+/* NAVIGATION =================================================== */
+
+
+header nav
+{
+  position: relative;
+  float: right;
+  height: 36px;
+  text-align: left;
+  left: -50%;
+}
+
+header nav ul
+{
+  position: relative;
+  left: 50%;
+  list-style: none;
+}
+
+header nav ul li
+{
+  display: block;
+  position: relative;
+  float: left;
+  font-family: 'Francois One', Arial, helvetica, serif; 
+  text-transform: uppercase;
+  font-size: 1.5em;
+  line-height: 1.2;
+}
+
+header nav ul li a,
+header nav ul li a:visited
+{
+  display: block;
+  height: 29px;
+  margin: 0 8px 0 8px;
+  padding: 6px 0 0 0;
+  color: #999;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 0px -1px 0px #333;
+  -webkit-transition: all 0.1s ease-out 0s;  
+  -moz-transition: all 0.1s ease-out 0s;
+  white-space: nowrap; 
+}
+
+header nav ul li a:hover,
+header nav ul li.active a
+{
+  text-shadow: none;
+  color: #DDD;
+}
+
+#main 
+{
+  width: 100%;
+}
+
+
+/* MAIN CONTENT ============================================================= */
+
+
+#sendmessage:before, 
+#sendmessage:after { content: ""; display: table; }
+#sendmessage:after { clear: both; }
+#sendmessage { zoom: 1; }
+.sendmessage:before, 
+.sendmessage:after { content: ""; display: table; }
+.sendmessage:after { clear: both; }
+.sendmessage { zoom: 1; }
+
+
+#sendmessage,
+.sendmessage
+{
+  margin: 0 0 15px 0;
+  padding: 20px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  background: #1B2122;
+  border: 1px solid #444;
+}
+
+#sendmessage textarea,
+.sendmessage textarea
+{
+  display: block;
+  float: left;
+  width: 70%;
+  min-height: 60px;
+  margin-right: 10px;
+  padding: 3px;
+  font-size: 14px;
+  color: #444;
+  border: none;
+}
+
+#sendmessage input[type="submit"],
+#sendmessage button
+.sendmessage input[type="submit"],
+.sendmessage button
+{
+  display: block;
+  float: right;
+  padding: 18px 0 15px 0;
+  color: #FFF;
+  width: 20%;
+  font-family: 'Francois One', Arial, helvetica, serif; 
+  text-transform: uppercase;
+  font-size: 2em;
+  border: none;
+  background: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;  
+}
+
+#main .message
+{
+  position: relative;
+  float: left;
+  padding: 10px;
+  border: 1px solid #efefef;
+  margin: 0 0 15px 0;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;   
+}
+
+#main .message:before,
+#main .message:after
+{
+  content: '';
+  z-index: -1;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  -webkit-transform: skew(-15deg) rotate(-6deg);
+  -moz-transform: skew(-15deg) rotate(-6deg);
+  -ms-transform: skew(-15deg) rotate(-6deg);
+  -o-transform: skew(-15deg) rotate(-6deg);
+  transform: skew(-15deg) rotate(-6deg);
+}
+
+#main .message:after
+{
+  left: auto;
+  right: 10px;
+  -webkit-transform: skew(15deg) rotate(6deg);
+  -moz-transform: skew(15deg) rotate(6deg);
+  -ms-transform: skew(15deg) rotate(6deg);
+  -o-transform: skew(15deg) rotate(6deg);
+  transform: skew(15deg) rotate(6deg);
+}
+
+#main .message header
+{
+  padding: 0;
+  margin: 0;
+  height: auto;
+  width: auto;
+}
+
+#main .message footer
+{
+  padding: 5px;
+  background: #EEE;
+  color: #444;
+  font-size: 0.9em;
+}
+
+#main #viewprofile,
+#main .vieprofile,
+#main #editprofile,
+#main .editprofile,
+#main #login,
+#main .login
+{
+  position: relative;
+  width: 50%;
+  min-width: 300px;
+  padding: 10px;
+  border: 1px solid #efefef;
+  margin: 0 auto;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;  
+}
+
+#main input[type="text"],
+#main input[type="email"],
+#main input[type="password"],
+#main input[type="tel"]
+{
+  display: block;
+  width: 98%;
+  height: 20px;
+  margin: 0 0 10px 0;
+  padding: 2px;
+  border: 1px solid #ccc;
+  background: #FFF;
+  clear: both;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;    
+}
+
+#main label
+{
+  display: block;
+  margin: 0 0 2px 0;
+}
+
+#main #login input[type="submit"],
+#main #login input[type="clear"],
+#main #viewprofile input[type="submit"],
+#main #viewprofile input[type="clear"],
+#main #editprofile input[type="submit"],
+#main #editprofile input[type="clear"],
+#main .login input[type="submit"],
+#main .login input[type="clear"],
+#main .viewprofile input[type="submit"],
+#main .viewprofile input[type="clear"],
+#main .editprofile input[type="submit"],
+#main .editprofile input[type="clear"]
+
+{
+  display: block;
+  margin: 20px auto;
+  padding: 5px;
+  color: #FFF;
+  font-family: 'Francois One', Arial, helvetica, serif; 
+  text-transform: uppercase;
+  font-size: 2em;
+  border: none;
+  background: #CE1414;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;  
+}
+
+#main #login span,
+#main #viewprofile span,
+#main #editprofile span
+#main #login p,
+#main #viewprofile p,
+#main #editprofile p,
+#main .login span,
+#main .viewprofile span,
+#main .editprofile span
+#main .login p,
+#main .viewprofile p,
+#main .editprofile p
+
+{
+  display: block;
+  margin: 0 0 2px 0;
+  color: #CCC;
+  font-size: 30px;
+  font-family: 'Francois One', Arial, helvetica, serif; 
+}
+
+
+
+/* ==========================================================================
+   Non-semantic helper classes
+   ========================================================================== */
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */ 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+
+/* ==========================================================================
+   Media Queries for Responsive Design.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+
+/* ==========================================================================
+   Print styles.
+   ========================================================================== */
+ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
