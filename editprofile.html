@@ -35,18 +35,18 @@
     
       <div class="editprofile" id="editprofile">
       
-        <form action="#">
+        <form action="#" method="POST">
 
           <label>Username</label>
-          <input type="text">
+          <input type="text" name="username" required>
           <label>First Name</label>
-          <input type="text">
+          <input type="text" name="firstname">
           <label>Last Name</label>
-          <input type="text">
+          <input type="text" name="lastname">
           <label>E-mail</label>
-          <input type="email">
+          <input type="email" name="email" required>
           <label>Password</label>
-          <input type="password">
+          <input type="password" name="password" required>
           
           <input type="submit" value="Save">
 
@@ -60,6 +60,7 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
   <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
+  <script src="js/jquery.jsonp.js"></script>
   <script src="js/application.js"></script>
 
 </body>

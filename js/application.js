@@ -1,3 +1,5 @@
+var JsonpData;
+
 function Messaging() {
     this.authKey = '';
     this.apiLocation = 'http://intweet.dev/';
@@ -36,7 +38,7 @@ Messaging.prototype.bootstrap = function() {
     }
     
     if (!this.isAllowedOnPage()) {
-        window.location.href = 'login.html';
+        //window.location.href = 'login.html';
     }
     
     if (!this.hasKey()) {
@@ -72,8 +74,26 @@ Messaging.prototype.isAllowedOnPage = function() {
 /**
  * Submits changes to someone's profile
  */
-Messaging.prototype.submitProfile = function () {
-    
+Messaging.prototype.submitProfile = function (event, formObj) {
+    event.preventDefault();
+    var formData = {
+        username: formObj.find('input[name=username]').val(),
+        firstname: formObj.find('input[name=firstname]').val(),
+        lastname: formObj.find('input[name=lastname]').val(),
+        email: formObj.find('input[name=email]').val(),
+        password: formObj.find('input[name=password]').val()
+    }
+    $.post(
+        "http://intweet.dev/user.json?callback=userdata", 
+        formData,
+        function (data) {
+            console.log(data);
+        }
+    );
+}
+
+Messaging.prototype.dataSaved = function() {
+    alert('Your data has been saved');
 }
 
 /**
@@ -87,8 +107,46 @@ Messaging.prototype.submitMessage = function() {
  * Submit a login form
  */
 Messaging.prototype.submitLogin = function() {
-    
+    $.getJSON("http://intweet.dev/auth.json?&callback=myData",
+      {
+         username: $('#frmUsername').val(),
+         password: $('#frmPassword').val()
+      },
+      function(userProfile) {
+          console.log(userProfile);
+          if (userProfile.meta.success !== 1) {
+              alert('Wrong username or password');
+              return false;
+          }
+          return true;
+          //window.location.href='index.html';
+      }
+    );
 }
+
+/**
+ * Load messages
+ */
+Messaging.prototype.loadMessages = function() {
+    $.ajax({
+        url: "http://intweet.dev/message.json?callback=myData",
+        success: function(data) {
+            var cloned;
+            $.each(data.data, function(key, messageData) {
+                console.log(messageData);
+                cloned = $('#messageTpl').clone().removeAttr('id');
+                cloned.find('a.fullnamelink').html(messageData.firstname + ' ' + messageData.lastname);    
+                cloned.find('.usermessage').html(messageData.message);
+                cloned.find('time').html(messageData.placed);
+                cloned.find('.usernamelink').html(messageData.username);
+                cloned.find('.maillink').html(messageData.email);
+                cloned.appendTo('#messages');
+                
+            });
+        },
+        dataType: 'jsonp'
+    });
+};
 
 $(document).ready(function(){
 
@@ -96,11 +154,14 @@ $(document).ready(function(){
     messApplication.bootstrap();
     
     // show messages
+    if ($('#messageTpl').length > 0) {
+        messApplication.loadMessages();
+    }
     
     // create profile
     // edit profile
-    $('#editprofile form').submit(function(){
-        Messaging.submitProfile();
+    $('#editprofile form').submit(function(event){
+        messApplication.submitProfile(event, $(this));
     });
 
     // add message    
@@ -109,8 +170,9 @@ $(document).ready(function(){
     });
    
     // login
-    $('#login form').submit(function(){
-        console.log('do a login') 
+    $('#login form').submit(function(e){
+        e.preventDefault();
+        messApplication.submitLogin();
     });
    
 });

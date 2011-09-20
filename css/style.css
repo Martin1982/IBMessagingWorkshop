@@ -302,6 +302,7 @@ header nav ul li.active a
 {
   position: relative;
   float: left;
+  width: 100%;
   padding: 10px;
   border: 1px solid #efefef;
   margin: 0 0 15px 0;
@@ -505,4 +506,8 @@ header nav ul li.active a
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
+}
+
+#messageTpl {
+    display: none;
 }
