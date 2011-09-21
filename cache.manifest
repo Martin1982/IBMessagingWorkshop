@@ -1,0 +1,18 @@
+CACHE MANIFEST
+# V1.0
+
+CACHE:
+/css/style.css
+/img/html-bg.img
+/img/ib.png
+/js/application.js
+/js/jquery-1.6.2.min.js
+/js/modernizr-2.0.6.js
+/js/refreshWorker.js
+/editprofile.html
+/index.html
+/login.html
+/viewprofile.html
+
+FALLBACK:
+/ error.html
