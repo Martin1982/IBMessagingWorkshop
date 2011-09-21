@@ -38,7 +38,7 @@ Messaging.prototype.bootstrap = function() {
     }
     
     if (!this.isAllowedOnPage()) {
-        //window.location.href = 'login.html';
+        window.location.href = 'login.html';
     }
     
     if (!this.hasKey()) {
@@ -92,10 +92,6 @@ Messaging.prototype.submitProfile = function (event, formObj) {
     );
 }
 
-Messaging.prototype.dataSaved = function() {
-    alert('Your data has been saved');
-}
-
 /**
  * Submit a new message from your own profile
  */
@@ -107,21 +103,24 @@ Messaging.prototype.submitMessage = function() {
  * Submit a login form
  */
 Messaging.prototype.submitLogin = function() {
-    $.getJSON("http://intweet.dev/auth.json?&callback=myData",
-      {
-         username: $('#frmUsername').val(),
-         password: $('#frmPassword').val()
-      },
-      function(userProfile) {
-          console.log(userProfile);
-          if (userProfile.meta.success !== 1) {
-              alert('Wrong username or password');
-              return false;
-          }
-          return true;
-          //window.location.href='index.html';
-      }
-    );
+    console.log('logging in...');
+    $.ajax({
+        url: "http://intweet.dev/auth.json?&callback=myData",
+        data: {
+            username: $('#frmUsername').val(),
+            password: $('#frmPassword').val()
+        },
+        success: function(userProfile) {
+            console.log(userProfile);
+            if (userProfile.meta.success !== 1) {
+                alert('Wrong username or password');
+                return false;
+            }
+            //window.location.href='index.html';
+        },
+        dataType: 'jsonp'
+    });
+    
 }
 
 /**
@@ -133,16 +132,32 @@ Messaging.prototype.loadMessages = function() {
         success: function(data) {
             var cloned;
             $.each(data.data, function(key, messageData) {
-                console.log(messageData);
                 cloned = $('#messageTpl').clone().removeAttr('id');
-                cloned.find('a.fullnamelink').html(messageData.firstname + ' ' + messageData.lastname);    
+                cloned.find('a.fullnamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.firstname + ' ' + messageData.lastname);    
                 cloned.find('.usermessage').html(messageData.message);
-                cloned.find('time').html(messageData.placed);
-                cloned.find('.usernamelink').html(messageData.username);
-                cloned.find('.maillink').html(messageData.email);
+                cloned.find('time').attr('datetime', messageData.placed).html(messageData.placed);
+                cloned.find('.usernamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.username);
+                cloned.find('.maillink').attr('href', 'mailto:' + messageData.email).html(messageData.email);
                 cloned.appendTo('#messages');
                 
             });
+        },
+        dataType: 'jsonp'
+    });
+};
+
+/**
+ * Load user profile
+ */
+Messaging.prototype.loadProfile = function(username) {
+    $.ajax({
+        url: "http://intweet.dev/user.json?username=" + username + "&callback=myData",
+        success: function(user) {
+            console.log(user.data);
+            $('#profileUsername').html(user.data.username);
+            $('#profileFirstname').html(user.data.firstname);
+            $('#profileLastname').html(user.data.lastname);
+            $('#profileEmail').html(user.data.email);
         },
         dataType: 'jsonp'
     });
@@ -156,6 +171,20 @@ $(document).ready(function(){
     // show messages
     if ($('#messageTpl').length > 0) {
         messApplication.loadMessages();
+    }
+    
+    if ($('#viewprofile').length > 0) {
+        var getVars = {};
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+
+            getVars[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        messApplication.loadProfile(getVars['username']);
     }
     
     // create profile
@@ -173,6 +202,10 @@ $(document).ready(function(){
     $('#login form').submit(function(e){
         e.preventDefault();
         messApplication.submitLogin();
+    });
+    
+    $('.backBtn').click(function(){
+        document.location.href = 'index.html';
     });
    
 });
