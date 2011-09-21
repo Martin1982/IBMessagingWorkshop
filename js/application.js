@@ -135,23 +135,29 @@ function Messaging() {
          * Load messages
          */
         loadMessages : function() {
-            $.ajax({
-                url: "http://intweet.dev/message.json?callback=myData",
-                success: function(data) {
-                    var cloned;
-                    $.each(data.data, function(key, messageData) {
-                        cloned = $('#messageTpl').clone().removeAttr('id');
-                        cloned.find('a.fullnamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.firstname + ' ' + messageData.lastname);    
-                        cloned.find('.usermessage').html(messageData.message);
-                        cloned.find('time').attr('datetime', messageData.placed).html(messageData.placed);
-                        cloned.find('.usernamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.username);
-                        cloned.find('.maillink').attr('href', 'mailto:' + messageData.email).html(messageData.email);
-                        cloned.appendTo('#messages');
-
+            var updateWorker = new Worker('js/refreshWorker.js');
+            
+            updateWorker.onmessage = function(event) {
+                if (event.data == 'update') {
+                    $.ajax({
+                        url: "http://intweet.dev/message.json?callback=myData",
+                        success: function(data) {
+                            $('#messages').empty();
+                            var cloned;
+                            $.each(data.data, function(key, messageData) {
+                                cloned = $('#messageTpl').clone().removeAttr('id').attr('class', 'message cloned');
+                                cloned.find('a.fullnamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.firstname + ' ' + messageData.lastname);    
+                                cloned.find('.usermessage').html(messageData.message);
+                                cloned.find('time').attr('datetime', messageData.placed).html(messageData.placed);
+                                cloned.find('.usernamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.username);
+                                cloned.find('.maillink').attr('href', 'mailto:' + messageData.email).html(messageData.email);
+                                cloned.appendTo('#messages');
+                            });
+                        },
+                        dataType: 'jsonp'
                     });
-                },
-                dataType: 'jsonp'
-            });
+                }
+            }
         },
         /**
          * Load user profile
@@ -164,6 +170,23 @@ function Messaging() {
                     $('#profileFirstname').html(user.data.firstname);
                     $('#profileLastname').html(user.data.lastname);
                     $('#profileEmail').html(user.data.email);
+                },
+                dataType: 'jsonp'
+            });
+            $.ajax({
+                url: "http://intweet.dev/message.json?callback=myData&username=" + username,
+                success: function(data) {
+                    var cloned;
+                    $.each(data.data, function(key, messageData) {
+                        cloned = $('#messageTpl').clone().removeAttr('id');
+                        cloned.find('a.fullnamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.firstname + ' ' + messageData.lastname);    
+                        cloned.find('.usermessage').html(messageData.message);
+                        cloned.find('time').attr('datetime', messageData.placed).html(messageData.placed);
+                        cloned.find('.usernamelink').attr('href', 'viewprofile.html?username=' + messageData.username).html(messageData.username);
+                        cloned.find('.maillink').attr('href', 'mailto:' + messageData.email).html(messageData.email);
+                        cloned.appendTo('#messages');
+
+                    });
                 },
                 dataType: 'jsonp'
             });
