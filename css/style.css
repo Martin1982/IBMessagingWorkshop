@@ -401,18 +401,11 @@ header nav ul li.active a
 }
 
 #main #login input[type="submit"],
-#main #login input[type="clear"],
 #main #viewprofile input[type="submit"],
-#main #viewprofile input[type="clear"],
 #main #editprofile input[type="submit"],
-#main #editprofile input[type="clear"],
 #main .login input[type="submit"],
-#main .login input[type="clear"],
 #main .viewprofile input[type="submit"],
-#main .viewprofile input[type="clear"],
-#main .editprofile input[type="submit"],
-#main .editprofile input[type="clear"]
-
+#main .editprofile input[type="submit"]
 {
   display: block;
   margin: 20px auto;
