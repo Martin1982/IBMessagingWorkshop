@@ -18,13 +18,30 @@
 
   <div id="page">
 
-	<!-- HEADER -->
-	<!-- NAVIGATIE -->
+    <header>
+        <a id="logo"><span>Ibuildings dinges!</span> Ibuildings massage centrum</a>
+
+        <nav>
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="login.html">Inloggen</a></li>
+                <li><a href="editprofile.html">Profiel</a></li>
+            </ul>
+        </nav>
+    </header>
       
     <div id="main" role="main">
     
 	<!-- VERSTUUR BERICHTEN -->
+    <section id="sendmessage">
+        <textarea id="message"></textarea>
+        <input type="submit" id="submit" value="SEND" />
+    </section>
+
 	<!-- ALLE/ONTVANGEN BERICHTEN -->
+    <section id="messages">
+        
+    </section>
 
     </div><!-- eo #main -->
         
@@ -32,6 +49,7 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
   <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
+  <script src="js/hairy.js"></script>
 
 </body>
 </html>
