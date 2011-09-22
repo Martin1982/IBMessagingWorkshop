@@ -276,6 +276,7 @@ header nav ul li.active a
   font-size: 14px;
   color: #444;
   border: none;
+  background: #FFF;
 }
 
 #sendmessage input[type="submit"],
@@ -392,6 +393,7 @@ header nav ul li.active a
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;    
+  background: #FFF;
 }
 
 #main label
