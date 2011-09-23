@@ -18,12 +18,57 @@
 
   <div id="page">
 
-	<!-- HEADER -->
-	<!-- NAVIGATIE -->
+     <header>
+        <a id="logo"><span>Ibuildings dinges!</span> Ibuildings massage centrum</a>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Inloggen</a></li>
+                <li class="active"><a href="editprofile.html">Profiel</a></li>
+            </ul>
+        </nav>
+    </header>
 	      
     <div id="main" role="main">
     
-		<!-- EDIT PROFILE -->
+        <section id="editprofile">
+            <h1>Profiel aanmaken</h1>
+
+            <form>
+                <fieldset>
+                    <label for="username">Gebruikersnaam</label>
+                    <input id="username" name="username" type="text" placeholder="Kies een gebruikersnaam..." required />
+                </fieldset>
+
+                <fieldset>
+                    <label for="password">Wachtwoord</label>
+                    <input id="password" name="password" type="password" placeholder="Kies een wachtwoord..." required />
+                </fieldset>
+
+                <fieldset>
+                    <label for="firstname">Voornaam</label>
+                    <input id="firstname" name="firstname" type="text" placeholder="Je voornaam, bijvoorbeeld Jan-Diederik..." />
+                </fieldset>
+
+                <fieldset>
+                    <label for="lastname">Achternaam</label>
+                    <input id="lastname" name="lastname" type="text" placeholder="Je achternaam, bijvoorbeeld Poepjes..." />
+                </fieldset>
+
+                <fieldset>
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" type="email" placeholder="Vul je e-mail adres in..." />
+                </fieldset>
+
+                <fieldset>
+                    <label for="phone">Phonenumber</label>
+                    <input id="phone" name="phone" type="tel" placeholder="Vul je telefoonnummer in..." />
+                </fieldset>
+
+                <input type="submit" value="Opslaan" id="submit" />
+            </form>
+        </section>
         
     </div><!-- eo #main -->
         
@@ -31,6 +76,7 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
   <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
+  <script src="js/hairy.js"></script>
 
 </body>
 </html>

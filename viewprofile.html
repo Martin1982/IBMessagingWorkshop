@@ -18,12 +18,39 @@
 
   <div id="page">
 
-	<!-- HEADER -->
-	<!-- NAVIGATIE -->
+    <header>
+        <a id="logo"><span>Ibuildings dinges!</span> Ibuildings massage centrum</a>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Inloggen</a></li>
+                <li><a href="editprofile.html">Profiel</a></li>
+            </ul>
+        </nav>
+    </header>
       
     <div id="main" role="main">
     
-		<!-- VIEW PROFILE -->
+		<section id="viewprofile" class="viewprofile">
+
+            <label>Username</label>
+            <span id="profileUsername"></span>
+
+            <label>First Name</label>
+            <span id="profileFirstname"></span>
+
+            <label>Last Name</label>
+            <span id="profileLastname"></span>
+
+            <label>E-mail</label>
+            <span id="profileEmail"></span>
+
+            <label>Wachtwoord</label>
+            <span id="profilePassword"></span>
+
+            <input type="submit" value="&lt; Back" class="backBtn" />
+        </section>
         
     </div><!-- eo #main -->
         
@@ -31,6 +58,7 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
   <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
+  <script src="js/hairy.js"></script>
 
 </body>
 </html>
